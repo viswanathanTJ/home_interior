@@ -11,13 +11,39 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+    
+    # Setup Java environment in order to build the Android app.
     - uses: actions/checkout@v2
+
+    # Setup the flutter environment.
     - uses: subosito/flutter-action@v1
       with:
         channel: beta
-    - run: flutter config --enable-web
-    - run: flutter build web
 
+    # Get flutter dependencies.
+    - run: flutter pub get
+    
+    # Check for any formatting issues in the code.
+    - run: flutter format --set-exit-if-changed .
+    
+    # Statically analyze the Dart code for any errors.
+    - run: flutter analyze .
+    
+    # Enable web
+    - run: flutter config --enable-web
+    
+    # Run widget tests for our flutter project.
+    - run: flutter test
+
+    # Build web
+    - run: flutter build web
+    
+    # Build apk.
+    - run: flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
+
+    #
+    # Deploy to netlify
     - name: Deploy to Netlify
       uses: nwtgck/actions-netlify@v1.1
       with:

@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:home_interior/RegistrationActivity.dart';
-import 'package:motion_toast/motion_toast.dart';
+import 'package:home_interior/LoginActivity.dart';
+// import 'package:house_interior/FadeAnimation.dart';
 
-class LoginActivity extends StatefulWidget {
+class RegistrationActivity extends StatefulWidget {
   @override
-  State<LoginActivity> createState() => _LoginActivity();
+  State<StatefulWidget> createState() => _RegistrationActivity();
 }
 
-class _LoginActivity extends State<LoginActivity> {
-  final username = TextEditingController();
-  final password = TextEditingController();
-
+class _RegistrationActivity extends State<RegistrationActivity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +59,7 @@ class _LoginActivity extends State<LoginActivity> {
                         margin: const EdgeInsets.only(top: 50),
                         child: const Center(
                           child: Text(
-                            "Login",
+                            "Registration",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 40,
@@ -99,6 +96,19 @@ class _LoginActivity extends State<LoginActivity> {
                             child: TextField(
                               decoration: InputDecoration(
                                   border: InputBorder.none,
+                                  hintText: "Name",
+                                  hintStyle:
+                                      TextStyle(color: Colors.grey[400])),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: const BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(color: Colors.grey))),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
                                   hintText: "Username",
                                   hintStyle:
                                       TextStyle(color: Colors.grey[400])),
@@ -113,11 +123,13 @@ class _LoginActivity extends State<LoginActivity> {
                                   hintStyle:
                                       TextStyle(color: Colors.grey[400])),
                             ),
-                          )
+                          ),const SizedBox(
+                      height: 30,
+                    ),
                         ],
                       ),
                     ),
-                    const SizedBox(
+                   const SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -130,26 +142,26 @@ class _LoginActivity extends State<LoginActivity> {
                           ])),
                       child: const Center(
                         child: Text(
-                          "Login",
+                          "Register",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                    const SizedBox(
+                   const SizedBox(
                       height: 70,
                     ),
                     GestureDetector(
-                      child: const Text('Register',
+                      child: const Text('Login',
                           style: TextStyle(
                               color: Color.fromRGBO(143, 148, 251, 1))),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => RegistrationActivity()));
+                            builder: (context) => LoginActivity()));
                       },
                     ),
-                    const SizedBox(
+                   const SizedBox(
                       height: 30,
                     ),
                     const Text(
@@ -163,14 +175,5 @@ class _LoginActivity extends State<LoginActivity> {
             ],
           ),
         ));
-  }
-
-  void showToast(String text) {
-    MotionToast.info(
-      description: Text(text),
-      title: const Text(
-        'Info',
-      ),
-    ).show(context);
   }
 }
