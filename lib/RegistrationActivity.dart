@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:home_interior/Database/UserDB.dart';
-// import 'package:home_interior/FadeAnimation.dart';
+import 'package:house_interior/Database/UserDB.dart';
+import 'package:house_interior/LoginActivity.dart';
+import 'package:house_interior/UserPage.dart';
+// import 'package:house_interior/FadeAnimation.dart';
 
-class RegistrationActivity extends StatefulWidget {
+class RegistrationActivity extends StatefulWidget{
   @override
   State<StatefulWidget> createState() => _RegistrationActivity();
-}
 
-class _RegistrationActivity extends State<RegistrationActivity> {
+}
+class _RegistrationActivity extends State<RegistrationActivity>{
   final mail_id = TextEditingController();
   final pass = TextEditingController();
   final name = TextEditingController();
@@ -26,7 +28,9 @@ class _RegistrationActivity extends State<RegistrationActivity> {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('images/background.png'),
-                          fit: BoxFit.fill)),
+                          fit: BoxFit.fill
+                      )
+                  ),
                   child: Stack(
                     children: <Widget>[
                       Positioned(
@@ -36,7 +40,9 @@ class _RegistrationActivity extends State<RegistrationActivity> {
                         child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage('images/light-1.png'))),
+                                  image: AssetImage('images/light-1.png')
+                              )
+                          ),
                         ),
                       ),
                       Positioned(
@@ -46,7 +52,9 @@ class _RegistrationActivity extends State<RegistrationActivity> {
                         child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage('images/light-2.png'))),
+                                  image: AssetImage('images/light-2.png')
+                              )
+                          ),
                         ),
                       ),
                       Positioned(
@@ -57,20 +65,16 @@ class _RegistrationActivity extends State<RegistrationActivity> {
                         child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage('images/clock.png'))),
+                                  image: AssetImage('images/clock.png')
+                              )
+                          ),
                         ),
                       ),
                       Positioned(
                         child: Container(
                           margin: EdgeInsets.only(top: 50),
                           child: Center(
-                            child: Text(
-                              "Registration",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Text("Registration", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
                           ),
                         ),
                       )
@@ -90,36 +94,38 @@ class _RegistrationActivity extends State<RegistrationActivity> {
                               BoxShadow(
                                   color: Color.fromRGBO(143, 148, 251, .2),
                                   blurRadius: 20.0,
-                                  offset: Offset(0, 10))
-                            ]),
+                                  offset: Offset(0, 10)
+                              )
+                            ]
+                        ),
                         child: Column(
                           children: <Widget>[
                             Container(
                               padding: EdgeInsets.all(8.0),
                               decoration: const BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(color: Colors.grey))),
+                                  border: Border(bottom: BorderSide(color: Colors.grey))
+                              ),
                               child: TextField(
                                 controller: name,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Name",
-                                    hintStyle:
-                                        TextStyle(color: Colors.grey[400])),
+                                    hintStyle: TextStyle(color: Colors.grey[400])
+                                ),
                               ),
                             ),
                             Container(
                               padding: EdgeInsets.all(8.0),
                               decoration: const BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(color: Colors.grey))),
+                                  border: Border(bottom: BorderSide(color: Colors.grey))
+                              ),
                               child: TextField(
                                 controller: mail_id,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Email or Phone number",
-                                    hintStyle:
-                                        TextStyle(color: Colors.grey[400])),
+                                    hintStyle: TextStyle(color: Colors.grey[400])
+                                ),
                               ),
                             ),
                             Container(
@@ -129,48 +135,47 @@ class _RegistrationActivity extends State<RegistrationActivity> {
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Password",
-                                    hintStyle:
-                                        TextStyle(color: Colors.grey[400])),
+                                    hintStyle: TextStyle(color: Colors.grey[400])
+                                ),
                               ),
                             )
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
+                      SizedBox(height: 30,),
                       Container(
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(colors: [
-                              Color.fromRGBO(143, 148, 251, 1),
-                              Color.fromRGBO(143, 148, 251, .6),
-                            ])),
+                            gradient: LinearGradient(
+                                colors: [
+                                  Color.fromRGBO(143, 148, 251, 1),
+                                  Color.fromRGBO(143, 148, 251, .6),
+                                ]
+                            )
+                        ),
                         child: Center(
                           child: GestureDetector(
-                            onTap: () {
-                              UserDB userDb = new UserDB(
-                                  name.text, mail_id.text, pass.text);
-                              userDb.init();
+                            onTap: (){
+                              UserDB userDb = new UserDB(name.text, mail_id.text, pass.text);
+                              UserDB.init();
                               userDb.insertDB();
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => UserPage()));
                             },
-                            child: Text(
-                              "Register",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            child: Text("Register", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 70,
-                      ),
-                      Text(
-                        "Forgot Password?",
-                        style:
-                            TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+                      SizedBox(height: 70,),
+                      GestureDetector(
+                        child: Text('Login',
+                            style: TextStyle(
+                                color: Color.fromRGBO(143, 148, 251, 1))),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LoginActivity()));
+                        },
                       ),
                     ],
                   ),
@@ -178,6 +183,8 @@ class _RegistrationActivity extends State<RegistrationActivity> {
               ],
             ),
           ),
-        ));
+        )
+    );
   }
+
 }

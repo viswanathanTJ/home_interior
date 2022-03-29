@@ -4,7 +4,7 @@ import 'package:path/path.dart';
 
 class AdminDB {
   static var database;
-  init() async{
+  static init() async{
     var path = await getDatabasesPath();
     // WidgetsFlutterBinding.ensureInitialized();
     database = await openDatabase(
@@ -29,7 +29,10 @@ class AdminDB {
     List<Map<String, dynamic>> map = await database.rawQuery('SELECT *FROM admin');
     print(map);
   }
-  check(String mail, String pass) async{
+  static bool Check(String mail, String pass, int i){
+    return mail=='admin@gmail.com' && pass=='12345678';
+  }
+  static Future<bool> check(String mail, String pass) async{
     List<Map<String, dynamic>> checkMap = await database.query('admin', where:"mail=?", whereArgs:[mail], limit:1);
     if(checkMap[0]!=null && checkMap[0]['password']==pass){
       return true;
