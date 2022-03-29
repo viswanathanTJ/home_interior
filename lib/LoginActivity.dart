@@ -147,8 +147,10 @@ class _LoginActivity extends State<LoginActivity>{
                                   Color.fromRGBO(143, 148, 251, 1),
                                   Color.fromRGBO(143, 148, 251, .6),
                                 ]
+                                
                             )
                         ),
+
                         child: Center(
                           child: GestureDetector(
                         onTap: () {

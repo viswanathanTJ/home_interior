@@ -14,6 +14,7 @@ class MainApp extends StatelessWidget{
       theme: ThemeData(fontFamily: 'poppins'),
       // home: HomeActivity("admin"),
       home: LoginActivity(),
+      
     );
   }
 }
