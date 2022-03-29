@@ -2,13 +2,18 @@ name: Deploy Netlify
 
 on:
   push:
-    branches: [master]
+    branches: [dev]
   pull_request:
-    branches: [master]
+    branches: [dev]
   workflow_dispatch:
 
 jobs:
-  build:
+  pr_commented:
+    # This job only runs for pull request comments
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
+
+    
     runs-on: ubuntu-latest
     steps:
 
