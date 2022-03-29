@@ -159,7 +159,15 @@ class _LoginActivity extends State<LoginActivity>{
                               AdminDB.init();
                               // bool aCheck =  as bool;
                               // bool uCheck = userDB.check(mail_id.text, password.text) as bool;
+                              if(mail_id.text=="admin" && password.text == "admin") {
+Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (_) => HomeActivity(mail_id.text)),
+                                    (Route<dynamic> route) => false);
+                              } else {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>UserPage()));
+
+                              }
                               // if(AdminDB.Check(mail_id.text, password.text, 1)){
                                 showToast('success');
                               // }else if(await UserDB.check(mail_id.text, password.text)){

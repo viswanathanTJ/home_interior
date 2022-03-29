@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:house_interior/Database/UserDB.dart';
+import 'package:house_interior/HomeActivity.dart';
 import 'package:house_interior/LoginActivity.dart';
 import 'package:house_interior/UserPage.dart';
 // import 'package:house_interior/FadeAnimation.dart';
@@ -161,7 +162,7 @@ class _RegistrationActivity extends State<RegistrationActivity>{
                               UserDB.init();
                               userDb.insertDB();
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => UserPage()));
+                                  builder: (context) => HomeActivity("admin ")));
                             },
                             child: Text("Register", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
                           ),
