@@ -1,4 +1,6 @@
 
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'tcard.dart';
@@ -19,6 +21,7 @@ List<Widget> cards = List.generate(
   images.length,
   (int index) {
     return Container(
+      
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.0),
@@ -57,54 +60,58 @@ class _UserPageState extends State<UserPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TCard(
-              cards: cards,
-              leftIcon: ElevatedButton(
-                // the left icon on the card
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(52, 52),
-                  elevation: 0,
-                  primary: Colors.red,
-                  shape: CircleBorder(
-                    side: BorderSide(width: 0, color: Colors.transparent),
+            Container(
+              height: 400,
+              decoration: BoxDecoration(),
+              child: TCard(
+                cards: cards,
+                leftIcon: ElevatedButton(
+                  // the left icon on the card
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: Size(52, 52),
+                    elevation: 0,
+                    primary: Colors.red,
+                    shape: CircleBorder(
+                      side: BorderSide(width: 0, color: Colors.transparent),
+                    ),
+                  ),
+                  onPressed: null,
+                  child: const Icon(
+                    Icons.close,
+                    color: Colors.black45,
+                    size: 32,
                   ),
                 ),
-                onPressed: null,
-                child: const Icon(
-                  Icons.close,
-                  color: Colors.black45,
+                // the right icon if you want it.
+                rightIcon: const Icon(
+                  Icons.favorite,
+                  color: Colors.pink,
                   size: 32,
                 ),
+                size: Size(360, 480),
+                controller: _controller,
+                // onForward: (index, info) {
+                //   print(index);
+                //   var offset = 3;
+                //   if (index >= cards.length - offset) {
+                //     print('loading more...');
+                //     List<Widget> addCards = List.generate(
+                //             // generate or load more cards from your server
+                //             )
+                //         .toList();
+                //     setState(() {
+                //       cards.addAll(addCards);
+                //     });
+                //     _controller.append(addCards); // append more cards
+                //   }
+                // },
+                onBack: (index, info) {
+                  print(index);
+                },
+                onEnd: () {
+                  print('end');
+                },
               ),
-              // the right icon if you want it.
-              rightIcon: const Icon(
-                Icons.favorite,
-                color: Colors.pink,
-                size: 32,
-              ),
-              size: Size(360, 480),
-              controller: _controller,
-              // onForward: (index, info) {
-              //   print(index);
-              //   var offset = 3;
-              //   if (index >= cards.length - offset) {
-              //     print('loading more...');
-              //     List<Widget> addCards = List.generate(
-              //             // generate or load more cards from your server
-              //             )
-              //         .toList();
-              //     setState(() {
-              //       cards.addAll(addCards);
-              //     });
-              //     _controller.append(addCards); // append more cards
-              //   }
-              // },
-              onBack: (index, info) {
-                print(index);
-              },
-              onEnd: () {
-                print('end');
-              },
             ),
             SizedBox(
               height: 40,
@@ -112,8 +119,8 @@ class _UserPageState extends State<UserPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                OutlineButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     print(_controller);
                     _controller.back();
                   },
