@@ -149,6 +149,7 @@ class _LoginActivity extends State<LoginActivity>{
                                 ]
                             )
                         ),
+                        
                         child: Center(
                           child: GestureDetector(
                         onTap: () {
