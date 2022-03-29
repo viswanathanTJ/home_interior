@@ -42,7 +42,12 @@ dependencies:
   #link : https://pub.dev/packages/animated_text_kit
 
   simple_animations: ^1.3.3
-
+  sqflite: ^2.0.2
+  path_provider: ^2.0.9
+  flutter_tindercard: ^0.2.0
+  swipe_cards: ^1.0.0
+  tcard: ^1.3.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,6 +78,10 @@ flutter:
     - images/clock.png
     - images/light-1.png
     - images/light-2.png
+    - assets/fonts/poppins_regular.ttf
+
+#    - images/a_dot_ham.jpeg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -84,6 +93,9 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: poppins
+        - asset:fonts/poppins_regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
