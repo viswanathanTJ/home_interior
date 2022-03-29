@@ -12,7 +12,8 @@ class MainApp extends StatelessWidget{
     // AdminDB().init();
     return MaterialApp(
       theme: ThemeData(fontFamily: 'poppins'),
-      home: UserPage(),
+      // home: HomeActivity("admin"),
+      home: LoginActivity(),
     );
   }
 }

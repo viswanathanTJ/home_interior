@@ -15,37 +15,45 @@ class _HomeActivity extends State<HomeActivity>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Admin Dashboard'),
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20,),
-            ElevatedButton(onPressed: (){
-
-            }, child: Text('Add')),
-            SizedBox(height: 20,),
-            FutureBuilder(
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image(image: AssetImage('images/bg1.jpg'), height: 200,width: double.infinity, fit: BoxFit.fill,),
-                            SizedBox(height: 20,)
-                          ],
-                        ),
-                      );
-                    },
-                    itemCount: 10,);
-                }),
+            // SizedBox(height: 20,),
+            // FutureBuilder(
+            //     builder: (context, snapshot) {
+            //       return ListView.builder(
+            //         shrinkWrap: true,
+            //         itemBuilder: (context, index) {
+            //           return SingleChildScrollView(
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 Image(image: AssetImage('images/bg1.jpg'), height: 200,width: double.infinity, fit: BoxFit.fill,),
+            //                 SizedBox(height: 20,)
+            //               ],
+            //             ),
+            //           );
+            //         },
+            //         itemCount: 10,);
+            //     }),
           ],
         ),
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green,
+        onPressed: () {
+
+        },
+      ),
     );
+    
   }
 
 }
